@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QR Specifications - Merchant Presented</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,800%7CWork+Sans:200,300%7CJosefin+Sans:100" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/uikit.min.js" defer></script>
+    <script src="js/uikit-icons.min.js" defer></script>
+</head>
+
+<body class="uk-background-primary uk-light">
+
+
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+
+        <nav class="uk-navbar-container uk-margin uk-light">
+            <div class="uk-container">
+                <div data-uk-navbar>
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo uk-text-small" href="index.html">EMVco/SG QR</a>
+                    </div>
+                    <div class="uk-navbar-center uk-visible@m">
+
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="index.html">Index</a></li>
+                            <li ><a href="faq.html">FAQ</a></li>
+                            <li ><a href="changelog.html">Changelog</a></li>
+                            <li ><a href="download.html">Download</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+
+    <section class="tm-margin-large-top">
+        <div class="uk-container">
+            <h1 class="uk-margin-medium-bottom uk-heading-hero">Specifications: EMVCo Merchant Presented</h1>
+            <ul class="uk-breadcrumb uk-margin-medium-bottom">
+                <li><a href="index.html">Index</a></li>
+                <li><a href="category.html">Specification Details</a></li>
+                <li><span href="emvco_merchant.html">EMVCo Merchant Presented</span></li>
+            </ul><br>
+            <hr class="uk-margin-remove">
+    
+                <h2 id="download-1" class="uk-margin-medium-bottom">Download PDF</h2>
+                <table class="uk-table uk-table-divider uk-table-middle">
+                    <tbody>
+                        <tr>
+                            <td><a href="./assets/EMVCo-Merchant-Presented-QR-Specification-v1.1.pdf"><span data-uk-icon="icon: download; ratio: 1.4"></span></a></td>
+                            <td>1.1</td>
+                            <td></td>
+                            <td>EMVCo-Merchant-Presented-QR-Specification-v1.1.pdf</td>
+                            <td>November 2020</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+
+        <hr class="uk-margin-remove">
+        <ul class="uk-list uk-list-large uk-margin-medium-top">
+            <li><a href="#article-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> 1. Introduction</a></li>
+            <li><a href="#article-1-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.1 Purpose</a></li>
+            <li><a href="#article-1-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.2 Normative References</a></li>
+            <li><a href="#article-1-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.3 Notational Conventions</a></li>
+            <li><a href="#article-1-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.4 Data Objects</a></li>
+            <br>
+            <li><a href="#article-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> 2. Overview to EMV® QR Code Payment</a></li>
+            <br>
+            <li><a href="#article-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> 3. EMV QR Code Payload Data Objects</a></li>
+            <li><a href="#article-3-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;3.1 QR Code Payload</a></li>
+            <li><a href="#article-3-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;3.2 Data Organization</a></li>
+            <li><a href="#article-3-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;3.3 Data Object ID Allocation</a></li>
+            <br>
+            <li><a href="#article-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> 4. Requirements</a></li>
+            <li><a href="#article-4-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.1 Payload</a></li>
+            <li><a href="#article-4-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.2 Presence of Data Objects</a></li>
+            <li><a href="#article-4-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.3 Data Object ID</a></li>
+            <li><a href="#article-4-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.4 Data Object Length</a></li>
+            <li><a href="#article-4-5" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.5 Data Object Values</a></li>
+            <li><a href="#article-4-6" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.6 Data Organization</a></li>
+            <li><a href="#article-4-7" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.7 Data Objects - Root</a></li>
+            <li><a href="#article-4-8" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.8 Data Objects - Additional Data Field Template (ID "62")</a></li>
+            <li><a href="#article-4-9" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.9 Data Objects - Merchant Information - Language Template (ID "64")</a></li>
+            <li><a href="#article-4-10" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.10 Data Objects - RFU for EMVCo (IDs "65" to "79")</a></li>
+            <li><a href="#article-4-11" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.11 Data Objects - Unreserved Templates (IDs "80" to "99"</a></li>
+            <li><a href="#article-4-12" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;4.12 Data Coding of an EMV Merchant-Presented QR Code</a></li>
+            <br>
+            <li><a href="#article-5" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> ANNEX A - Data Objects Dictionary</a></li>
+            <br>
+            <li><a href="#article-6" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> ANNEX B - Examples</a></li>
+            <li><a href="#article-6-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.1 QR Code Conventions</a></li>
+            <li><a href="#article-6-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.2 Merchant Account Information</a></li>
+            <li><a href="#article-6-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.3 Additional Merchant Information</a></li>
+            <li><a href="#article-6-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.4 Transaction Value</a></li>
+            <li><a href="#article-6-5" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.5 Additional Data Field Template</a></li>
+            <li><a href="#article-6-6" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.6 Unreserved Template</a></li>
+            <li><a href="#article-6-7" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.7 Representation</a></li>
+            <li><a href="#article-6-8" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;B.8 Merchant Channel</a></li>
+            <br>
+            <li><a href="#article-CL" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> Changelog</a></li>
+        </ul>
+        <br>
+        <hr class="uk-margin-remove">
+        <br>
+
+        <h2 id="article-1" class="uk-article-title uk-margin-medium-bottom">1. Introduction<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-1" class="uk-article-title uk-margin-medium-bottom">1.1 Purpose<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>This document provides:</p>
+            <p>&nbsp;&nbsp;• A brief description of merchant presented EMV QR Code payment and the entities involved.</p>
+            <p>&nbsp;&nbsp;• The requirements on the QR Code displayed by the Merchant, including format and content.</p>
+            <p>The processing of the QR Code by the mobile application and the network messages as a result of this processing are out of scope of this document.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-2" class="uk-article-title uk-margin-medium-bottom">1.2 Normative References<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>Table 1.1 lists the documents referenced in this specification.</p>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-1').style.display='inline'">Show Table: 1.1</button></p>
+            <div id="toggle-table-emvco-m-p-1" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 1.1: References Materials</h4></th></tr>
+                    <tr>
+                        <th><b>Reference</b></th>
+                        <th><b>Publication Name</b></th>
+                    </tr>
+                    <tr>
+                        <th>[ISO/IEC 18004]</th>
+                        <th align="left">Information technology — Automatic identification and data capture techniques - QR Code bar code symbology specification</th>
+                    </tr>
+                    <tr>
+                        <th>[ISO 18245]</th>
+                        <th align="left">Retail financial services — Merchant category codes</th>
+                    </tr>
+                    <tr>
+                        <th>[ISO/IEC 13239]</th>
+                        <th align="left">Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures</th>
+                    </tr>
+                    <tr>
+                        <th>[ISO 3166-1 alpha 2]</th>
+                        <th align="left">Codes for the representation of names of countries and their subdivisions — Part 1: Country codes, using two-letter country codes.</th>
+                    </tr>
+                    <tr>
+                        <th>[ISO 4217]</th>
+                        <th align="left">Codes for the representation of currencies and funds</th>
+                    </tr>
+                    <tr>
+                        <th>[ISO 7816-4]</th>
+                        <th align="left">Identification cards — Integrated circuit cards — Part 4: Organization, security and commands for interchange</th>
+                    </tr>
+                    <tr>
+                        <th>[ISO 639]</th>
+                        <th align="left">Codes for the representation of names of languages — Part 1: Alpha - 2 Code</th>
+                    </tr>
+                    <tr>
+                        <th>[EMV Book 4]</th>
+                        <th align="left">EMV Integrated Circuit Card Specifications for Payment Systems - Book 4 Cardholder, Attendant, and Acquirer Interface Requirements</th>
+                    </tr>
+                    <tr>
+                        <th>[Unicode]</th>
+                        <th align="left">Unicode Standard, specifically the UTF-8 encoding form. For more information, please check:<br><u><a href="http://www.unicode.org/versions/latest">http://www.unicode.org/versions/latest</a></u></th>
+                    </tr>
+                    <tr>
+                        <th>[UUID]</th>
+                        <th align="left">A universally unique identifier (UUID) as defined in the Internet Engineering Task Force (IETF) RFC 4122:<br><u><a href="https://tools.ietf.org/html/rfc4122">https://tools.ietf.org/html/rfc4122</a></u></th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-1').style.display='none'; window.location.href='emvco_merchant.html#article-1-2'">Hide Table: 1.1</button>
+            </div>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-3" class="uk-article-title uk-margin-medium-bottom">1.3 Notational Conventions<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>1.3.1 Abbreviations</h3>
+            <p>The abbreviations listed in table 1.2 are used in this specification.</p>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-2').style.display='inline'">Show Table: 1.2</button></p>
+            <div id="toggle-table-emvco-m-p-2" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 1.2: Abbreviations</h4></th></tr>
+                    <tr>
+                        <th><b>Abbreviations</b></th>
+                        <th><b>Description</b></th>
+                    </tr>
+                    <tr>
+                        <th>ans</th>
+                        <th align="left">Alphanumeric Special</th>
+                    </tr>
+                    <tr>
+                        <th>C</th>
+                        <th align="left">Conditional</th>
+                    </tr>
+                    <tr>
+                        <th>CDCVM</th>
+                        <th align="left">Consumer Device Cardholder Verification Method</th>
+                    </tr>
+                    <tr>
+                        <th>CRC</th>
+                        <th align="left">Cyclic Redundancy Check</th>
+                    </tr>
+                    <tr>
+                        <th>ECI</th>
+                        <th align="left">Extended Channel Interpretation</th>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th align="left">Identifier of the data object</th>
+                    </tr>
+                    <tr>
+                        <th>ISO</th>
+                        <th align="left">International Standards Organization</th>
+                    </tr>
+                    <tr>
+                        <th>M</th>
+                        <th align="left">Mandatory</th>
+                    </tr>
+                    <tr>
+                        <th>N</th>
+                        <th align="left">Numeric</th>
+                    </tr>
+                    <tr>
+                        <th>O</th>
+                        <th align="left">Optional</th>
+                    </tr>
+                    <tr>
+                        <th>QR Code</th>
+                        <th align="left">Quick Response Code</th>
+                    </tr>
+                    <tr>
+                        <th>RFU</th>
+                        <th align="left">Reserved for Future Use</th>
+                    </tr>
+                    <tr>
+                        <th>S</th>
+                        <th align="left">String</th>
+                    </tr>
+                    <tr>
+                        <th>SDK</th>
+                        <th align="left">Software Development Kit</th>
+                    </tr>
+                    <tr>
+                        <th>var.</th>
+                        <th align="left">Variable</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-2').style.display='none'; window.location.href='emvco_merchant.html#article-1-3'">Hide Table: 1.2</button>
+            </div>
+            <h3>1.3.3 Terminology and Conventions</h3>
+            <p>The following words are used often in this specification and have a specific meaning:</p>
+            <p>&nbsp;&nbsp;<u>Shall</u><br>&nbsp;&nbsp;Defines a product or system capability which is mandatory.</p>
+            <p>&nbsp;&nbsp;<u>May</u><br>&nbsp;&nbsp;Defines a product or system capability which is optional or a statement which is informative only and is out of scope for this specification.</p>
+            <p>&nbsp;&nbsp;<u>Should</u><br>&nbsp;&nbsp;Defines a product or system capability which is recommended.</p>
+            <h3>1.3.3 Requirement Numbering</h3>
+            <p>Requirements in this specification are uniquely numbered with the number appearing next to each requirement. For example:</p>
+            <p>&nbsp;&nbsp;4.2.1.1&nbsp;&nbsp;&nbsp;&nbsp;Data objects that are labelled [M] in table 3.6 shall be present under the root of the QR Code.</p>
+            <p>Note: Requirements may include informative statements. In this case, the statement is written in the italic font and the verb "should" or “may” instead of “shall” is used.</p>
+            <h3>1.3.4 Presence of Data Objects</h3>
+            <p>For the presence of data objects, the following notation is used:</p>
+            <p>&nbsp;&nbsp;• M: Mandatory — shall always be present.<br>
+                &nbsp;&nbsp;• C: Conditional — shall be present under certain conditions.<br>
+                &nbsp;&nbsp;• O: Optional — may be present.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-4" class="uk-article-title uk-margin-medium-bottom">1.4 Data Objects<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>1.4.1 Format Conventions</h3>
+            <p>The value of a data object encoded in the EMV Merchant-Presented QR Code has one of the formats listed in Table 1.3.</p>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-3').style.display='inline'">Show Table: 1.3</button></p>
+            <div id="toggle-table-emvco-m-p-3" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 1.3: Data Object Value — Format Conventions</h4></th></tr>
+                    <tr>
+                        <th><b>Format</b></th>
+                        <th><b>Meaning</b></th>
+                    </tr>
+                    <tr>
+                        <th>Numeric (N)</th>
+                        <th align="left">• Values that can be represented by all digits, from "0" to "9".<br>• The numeric alphabet includes ten (10) characters in total.</th>
+                    </tr>
+                    <tr>
+                        <th>Alphanumeric Special (ans)</th>
+                        <th align="left">• Values that can be represented by the Common Character Set as defined in [EMV Book 4].<br>• The Alphanumeric Special alphabet includes ninety-six (96) characters in total and includes the numeric alphabet and punctuation.</th>
+                    </tr>
+                    <tr>
+                        <th>String (S)</th>
+                        <th align="left">• Values represented by any precomposed character(s) defined in [Unicode].</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-3').style.display='none'; window.location.href='emvco_merchant.html#article-1-4'">Hide Table: 1.3</button>
+            </div>
+            <h3>1.4.2 Representation</h3>
+            <p>When referencing characters to include in the EMV Merchant-Presented QR Code, this specification encloses the characters in double quotes, for instance "Test@123".</p>
+            <p>A character can be represented by its hexadecimal value. Single quotes are used to indicate the hexadecimal value, for instance '42' to represent the character "B".</p>
+            <h3>1.4.3 Encoding</h3>
+            <p>For conversion of a character to its binary representation, this specification uses UTF-8 encoding as defined by [Unicode]. A character in UTF-8 can be up to 4 bytes long. Precomposed characters are recommended to maintain consistent character length for cross-platform compatibility reasons.</p>
+            <p>For more information, please see:<br>&nbsp;&nbsp;• <a href="http://unicode.org/faq/char_combmark.html">http://unicode.org/faq/char_combmark.html</a><br>&nbsp;&nbsp;• <a href="https://en.wikipedia.org/wiki/Precomposed_character">https://en.wikipedia.org/wiki/Precomposed_character</a></p>
+            <p>Characters from the numeric (N) and the Alphanumeric Special alphabet (ans), as defined in Table 1.3, are always 1 byte long. For instance, "3" and "c" are encoded as '33' and '63' respectively. Unicode characters outside this range are encoded in multiple bytes, for example, "ĉ" is encoded as '0109' and "的" is encoded as 'E79A84'.</p>
+            <h3>1.4.4 Reserved for Future Use (RFU)</h3>
+            <p>While the QR Code is required to not contain data objects that are RFU, the mobile application must ignore RFU data object IDs and data object values if present in the QR Code.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-2" class="uk-article-title uk-margin-medium-bottom">2. Overview to EMV® QR Code Payment<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>An EMV Merchant-Presented QR Code payment transaction enables consumers to make purchases using a merchant generated and displayed QR Code based on the merchant’s details. For example, it can be used for a transfer of funds to a Merchant account designated by the Merchant Account Information over a payment network in exchange for goods and services provided by the Merchant.</p>
+            <p>Consumers are issued a mobile application that has the capability to scan an EMV Merchant-Presented QR Code and initiate a payment transaction. This mobile application may be an existing mobile banking app offered by the Issuer or a third party. In both cases, the request to process the payment transaction is ultimately directed to the Issuer managing the account from which the funds will be withdrawn.</p>
+            <p>The Issuer receives the initial payment transaction, and secures or withdraws the transaction amount from the consumer's account.</p>
+            <p>Upon receiving the payment transaction, the Acquirer checks the validity of the Merchant Account Information and other merchant credentials and, when valid, credits the payment transaction amount to the account associated with the Merchant Account Information.</p>
+            <p>The Merchant awaits notification of a successful transaction response before delivering the goods and services to the Consumer.</p>
+            <p>The Issuer also provides a notification to the Consumer (typically to their mobile application).</p>
+            <p>Figure 2.1 illustrates the EMV Merchant-Presented QR Code transaction flow. Different message flows are possible between the entities involved, depending on type of wallet (Issuer wallet or third-party wallet) and the infrastructure supported by the payment network. In Figure 2.1, the combination of entities involved and the various message flows is jointly referred to as the 'Network'. Note that the specifics of this message flow from the mobile to the Network is out of EMVCo's scope.</p>
+            <p><table class="uk-table" border="0" style="width: 100%;">
+                <tr><th><h4>Figure 2.1: Merchant-Presented Mode Transaction Flow</h4></th></tr>
+                <tr><th><img src="./assets/emvco-m-2-1.png"></th></tr>
+                <tr><th align="left">[1] Merchant generates and displays QR Code based on merchant details.</th></tr>
+                <tr><th align="left">[2] Consumer scans QR Code using a mobile application to initiate the transaction, with CDCVM if required.</th></tr>
+                <tr><th align="left">[3] Mobile application sends the transaction initiation request to the Network.</th></tr>
+                <tr><th align="left">[4] The Network processes the transaction and informs the Merchant and the Consumer of the transaction outcome.</th></tr>
+            </table></p>
+        </article>
+        
+        <h2 id="article-3" class="uk-article-title uk-margin-medium-bottom">3. EMV QR Code Payload Data Objects<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-1" class="uk-article-title uk-margin-medium-bottom">3.1 QR Code Payload<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>The content of the QR Code includes the following information:</p>
+            <p>&nbsp;&nbsp;• The conventions used for the QR Code content, such as the Payload Format Indicator (see Table 3.1)<br>
+                &nbsp;&nbsp;• Merchant Account Information, including information on the Merchant account (see Table 3.2)<br>
+                &nbsp;&nbsp;• Additional information on the Merchant, such as the Merchant Name (see Table 3.3)<br>
+                &nbsp;&nbsp;• Information on the transaction value, if known, such as the Transaction Amount (see Table 3.4)<br>
+                &nbsp;&nbsp;• Additional data in support of various use cases, such as the Bill Number (see Table 3.5)</p>
+            <p>Table 3.1 to Table 3.5 lists the information that EMVCo has defined for inclusion in an EMV Merchant-Presented QR Code.</p>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-4').style.display='inline'">Show Table: 3.1 - QR Code Conventions</button></p>
+            <div id="toggle-table-emvco-m-p-4" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 3.1: QR Code Conventions</h4></th></tr>
+                    <tr>
+                        <th><b>Data Object</b></th>
+                        <th><b>Meaning</b></th>
+                    </tr>
+                    <tr>
+                        <th>Payload Format Indicator</th>
+                        <th align="left">• Defines the version of the QR Code template and hence the conventions on the identifiers, lengths, and values.<br>• In this version of the specification, the Payload Format Indicator has the value "01".</th>
+                    </tr>
+                    <tr>
+                        <th>Point of Initiation Method</th>
+                        <th align="left">• Identifies the communication technology (here QR Code) and whether the data is static or dynamic.<br>• The Point of Initiation Method has a value of "11" for static QR Codes and a value of "12" for dynamic QR Codes.<br>• The value of "11" is used when the same QR Code is shown for more than one transaction.<br>• The value of "12" is used when a new QR Code is shown for each transaction.</th>
+                    </tr>
+                    <tr>
+                        <th>Cyclic Redundancy Check (CRC)</th>
+                        <th align="left">• Checksum calculated over all the data objects included in the QR Code.</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-4').style.display='none'; window.location.href='emvco_merchant.html#article-3'">Hide Table: 3.1</button>
+            </div>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-5').style.display='inline'">Show Table: 3.2 - Merchant Account Information</button></p>
+            <div id="toggle-table-emvco-m-p-5" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 3.2: Merchant Account Information</h4></th></tr>
+                    <tr>
+                        <th><b>Data Object</b></th>
+                        <th><b>Meaning</b></th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Account Information</th>
+                        <th align="left">• Identifies the merchant.<br>• The format and value are unique and specific to a payment system and several values may be included in the QR Code.</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-5').style.display='none'; window.location.href='emvco_merchant.html#article-3'">Hide Table: 3.2</button>
+            </div>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-6').style.display='inline'">Show Table: 3.3 - Additional Merchant Information</button></p>
+            <div id="toggle-table-emvco-m-p-6" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 3.3: Additional Merchant Information</h4></th></tr>
+                    <tr>
+                        <th><b>Data Object</b></th>
+                        <th><b>Meaning</b></th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Category Code</th>
+                        <th align="left">• As defined by [ISO 18245] and assigned by the Acquirer.</th>
+                    </tr>
+                    <tr>
+                        <th>Country Code</th>
+                        <th align="left">• Indicates the country of the merchant acceptance device.<br>• A 2-character alpha value, as defined by [ISO 3166-1 alpha 2] and assigned by the Acquirer. The country may be displayed to the consumer by the mobile application when processing the transaction.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Name</th>
+                        <th align="left">• The “doing business as” name for the merchant, recognizable to the consumer.<br>• This name may be displayed to the consumer by the mobile application when processing the transaction.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant City</th>
+                        <th align="left">• City of operations for the merchant.<br>• This name may be displayed to the consumer by the mobile application when processing the transaction.</th>
+                    </tr>
+                    <tr>
+                        <th>Postal Code</th>
+                        <th align="left">• Zip code or Pin code or Postal code of the merchant.<br>• If present, this value may be displayed to the consumer by the mobile application when processing the transaction.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Information - Alternate Language</th>
+                        <th align="left">• Merchant Name and potentially other merchant related information in an alternate language, typically the local language.</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-6').style.display='none'; window.location.href='emvco_merchant.html#article-3'">Hide Table: 3.3</button>
+            </div>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-7').style.display='inline'">Show Table: 3.4 - Transaction Value</button></p>
+            <div id="toggle-table-emvco-m-p-7" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 3.4: Transaction Value</h4></th></tr>
+                    <tr>
+                        <th><b>Data Object</b></th>
+                        <th><b>Meaning</b></th>
+                    </tr>
+                    <tr>
+                        <th>Transaction Amount</th>
+                        <th align="left">• The transaction amount (excluding tips and convenience fees), if known. For instance, "99.34".<br>• If present, this value is displayed to the consumer by the mobile application when processing the transaction.<br>• If this data object is not present, the consumer is prompted to input the transaction amount to be paid to the merchant.</th>
+                    </tr>
+                    <tr>
+                        <th>Transaction Currency</th>
+                        <th align="left">• Indicates the currency code of the transaction.<br>• A 3-digit numeric value, as defined by [ISO 4217].<br>• This value will be used by the mobile application to display a recognizable currency to the consumer whenever an amount is being displayed or whenever the consumer is prompted to enter an amount.</th>
+                    </tr>
+                    <tr>
+                        <th>Tip or Convenience Indicator</th>
+                        <th align="left">• Indicates whether the consumer will be prompted to enter a tip or whether the merchant has determined that a flat, or percentage convenience fee is charged.</th>
+                    </tr>
+                    <tr>
+                        <th>Value of Convenience Fee Fixed</th>
+                        <th align="left">• The fixed amount convenience fee when 'Tip or Convenience Indicator' indicates a flat convenience fee.<br>• For example, "9.85", indicating that this fixed amount (in the transaction currency) will be charged on top of the transaction amount.</th>
+                    </tr>
+                    <tr>
+                        <th>Value of Convenience Fee Percentage</th>
+                        <th align="left">• The percentage convenience fee when 'Tip or Convenience Indicator' indicates a percentage convenience fee.<br>• For example, "3.00" indicating that a convenience fee of 3% of the transaction amount will be charged, on top of the transaction amount.</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-7').style.display='none'; window.location.href='emvco_merchant.html#article-3'">Hide Table: 3.4</button>
+            </div>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-8').style.display='inline'">Show Table: 3.5 - Additional Data Objects</button></p>
+            <div id="toggle-table-emvco-m-p-8" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="2"><h4>Table 3.5: Additional Data Objects</h4></th></tr>
+                    <tr>
+                        <th><b>Data Object</b></th>
+                        <th><b>Meaning</b></th>
+                    </tr>
+                    <tr>
+                        <th>Bill Number</th>
+                        <th align="left">• The invoice number or bill number. This number could be provided by the merchant or could be an indication for the mobile application to prompt the consumer to input a Bill Number.<br><br>• For example, the Bill Number may be present when the QR Code is used for bill payment.</th>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number</th>
+                        <th align="left">• The mobile number could be provided by the merchant or could be an indication for the mobile application to prompt the consumer to input a Mobile Number.<br><br>• For example, the Mobile Number to be used for multiple use cases, such as mobile top-up and bill payment.</th>
+                    </tr>
+                    <tr>
+                        <th>Store Label</th>
+                        <th align="left">• A distinctive value associated to a store.<br>• This value could be provided by the merchant or could be an indication for the mobile application to prompt the consumer to input a Store Label.<br><br>• For example, the Store Label may be displayed to the consumer on the mobile application identifying a specific store.</th>
+                    </tr>
+                    <tr>
+                        <th>Loyalty Number</th>
+                        <th align="left">• Typically, a loyalty card number.<br>• This number could be provided by the merchant, if known, or could be an indication for the mobile application to prompt the consumer to input their Loyalty Number.</th>
+                    </tr>
+                    <tr>
+                        <th>Reference Label</th>
+                        <th align="left">• Any value as defined by the merchant or acquirer in order to identify the transaction.<br>• This value could be provided by the merchant or could be an indication for the mobile app to prompt the consumer to input a transaction Reference Label.<br><br>• For example, the Reference Label may be used by the consumer mobile application for transaction logging or receipt display.</th>
+                    </tr>
+                    <tr>
+                        <th>Customer Label</th>
+                        <th align="left">• Any value identifying a specific consumer.<br>• This value could be provided by the merchant (if known), or could be an indication for the mobile application to prompt the consumer to input their Customer Label.<br><br>• For example, the Customer Label may be a subscriber ID for subscription services, a student enrolment number, etc.</th>
+                    </tr>
+                    <tr>
+                        <th>Terminal Label</th>
+                        <th align="left">• A distinctive value associated to a terminal in the store.<br>• This value could be provided by the merchant or could be an indication for the mobile application to prompt the consumer to input a Terminal Label.<br><br>• For example, the Terminal Label may be displayed to the consumer on the mobile application identifying a specific terminal.</th>
+                    </tr>
+                    <tr>
+                        <th>Purpose of Transaction</th>
+                        <th align="left">• Any value defining the purpose of the transaction.<br>• This value could be provided by the merchant or could be an indication for the mobile application to prompt the consumer to input a value describing the purpose of the transaction.<br><br>• For example, the Purpose of Transaction may have the value "International Data Package" for display on the mobile application.</th>
+                    </tr>
+                    <tr>
+                        <th>Additional Consumer Data Request</th>
+                        <th align="left">• Contains indications that the mobile application is to provide the requested information in order to complete the transaction.<br>• The information requested should be provided by the mobile application in the authorization without unnecessarily prompting the consumer.<br><br>• For example, the Additional Consumer Data Request may indicate that the consumer mobile number is required to complete the transaction, in which case the mobile application should be able to provide this number (that the mobile application has previously stored) without unnecessarily prompting the consumer.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Tax ID</th>
+                        <th align="left">• The tax identification number of the merchant, assigned by the governmental body of the country in which the EMV merchant-presented QR code is being used/displayed.<br><br>• For example, the Merchant Tax ID may be used by the consumer mobile application for receipt display.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Channel</th>
+                        <th align="left">• A merchant channel establishes the environment in which a QR Code is presented to the consumer.<br>• Covering use cases such as retail outlet, Ecommerce, bill payment with the purpose of improving transaction reporting.</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-8').style.display='none'; window.location.href='emvco_merchant.html#article-3'">Hide Table: 3.5</button>
+            </div>
+        </article>
+
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-2" class="uk-article-title uk-margin-medium-bottom">3.2 Data Organization<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>The data contained within a QR Code is organized as follows. Each data object is made up of three individual fields. The first field is an identifier (ID) by which the data object can be referenced. The next field is a length field that explicitly indicates the number of characters included in the third field: the value field. A data object is then represented as an ID / Length / Value combination, where:</p>
+            <p>&nbsp;&nbsp;• The ID is coded as a two-digit numeric value, with a value ranging from "00" to "99",<br>
+                &nbsp;&nbsp;• The length is coded as a two-digit numeric value, with a value ranging from "01" to "99",<br>
+                &nbsp;&nbsp;• The value field has a minimum length of one character and maximum length of 99 characters.</p>
+            <p>In the QR Code, the data objects are organized in a tree-like structure, under the root (see Figure 3.1). A data object may be a primitive data object or a template. A template may include other templates and primitive data objects.</p>
+            <h4>Figure 3.1: Data Object Organization in the QR Code</h4>
+            <br>
+            <p>Root&nbsp;&nbsp;&#9472;&#9472;&#9488;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#8921;Primitive Data Object<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#8921;Template<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#8921;Primitive Data Object<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#8921;Template</p>
+            <br>
+            <p>A data object that is not encapsulated within a template is said to be under the root of the QR Code.</p>
+            <p>The value of an ID is not unique and the data object to which it refers is context specific. If the ID is not under the root, the context of an ID is defined by the encapsulating template.</p>
+            <p>As an example: ID "01" that is under the root of the QR Code refers to the Point of Initiation Method, while ID "01" refers to the Bill Number when it is under the Additional Data Field Template (that is, within ID "62").</p>
+            <p>The Payload Format Indicator (ID "00") is the first data object under the root and allows the mobile application to determine the data representation of the remaining data included in the QR Code and how to parse the data. The CRC (ID "63") is the last object under the root and allows the mobile application to check the integrity of the data scanned without having to parse all of the data objects. The position of all other data objects under the root or within templates is arbitrary and may appear in any order.</p>
+            <p>The format of a value field in a data object is either Numeric (N), Alphanumeric Special (ans), or String (S). Note that Numeric is a subset of Alphanumeric Special and that Alphanumeric Special is a subset of String.</p>
+            <p>Table 3.6 lists the name of the data object, the ID of the data object, the format of the value field of the data object, the length of the value field of the data object, and whether the presence of the data object at the root level of the QR Code is Mandatory (M), Conditional (C), or Optional (O).</p>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-9').style.display='inline'">Show Table: 3.6 - Data Objects Under the Root of a QR Code</button></p>
+            <div id="toggle-table-emvco-m-p-9" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="6"><h4>Table 3.6: Data Objects Under the Root of a QR Code</h4></th></tr>
+                    <tr>
+                        <th><b>Name</b></th>
+                        <th><b>ID</b></th>
+                        <th><b>Format</b></th>
+                        <th><b>Length</b></th>
+                        <th><b>Presence</b></th>
+                        <th><b>Comment</b></th>
+                    </tr>
+                    <tr>
+                        <th>Payload Format Indicator</th>
+                        <th>"00"</th>
+                        <th>N</th>
+                        <th>"02"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Point of Initiation Method</th>
+                        <th>"01"</th>
+                        <th>N</th>
+                        <th>"02"</th>
+                        <th>O</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Account Information</th>
+                        <th>"02" - "51"</th>
+                        <th>ans</th>
+                        <th>Each variable up to "99"</th>
+                        <th>M</th>
+                        <th align="left">• At least one Merchant Account Information data object shall be present.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Category Code</th>
+                        <th>"52"</th>
+                        <th>N</th>
+                        <th>"04"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Transaction Currency</th>
+                        <th>"53"</th>
+                        <th>N</th>
+                        <th>"03"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Transaction Amount</th>
+                        <th>"54"</th>
+                        <th>N</th>
+                        <th>Variable up to "13"</th>
+                        <th>C</th>
+                        <th align="left">• Absent if the mobile application is to prompt the consumer to enter transaction amount.<br>• Present otherwise.</th>
+                    </tr>
+                    <tr>
+                        <th>Tip or Convenience Indicator</th>
+                        <th>"55"</th>
+                        <th>N</th>
+                        <th>"02"</th>
+                        <th>O</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Value of Convenience Fee Fixed</th>
+                        <th>"56"</th>
+                        <th>ans</th>
+                        <th>Variable up to "13"</th>
+                        <th>C</th>
+                        <th rowspan="2" align="left">• Presence of these data objects depends on the presence and value of the Tip or Convenience Indicator.</th>
+                    </tr>
+                    <tr>
+                        <th>Value of Convenience Fee Percentage</th>
+                        <th>"57"</th>
+                        <th>N</th>
+                        <th>Variable up to "05"</th>
+                        <th>C</th>
+                    </tr>
+                    <tr>
+                        <th>Country Code</th>
+                        <th>"58"</th>
+                        <th>ans</th>
+                        <th>"02"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Name</th>
+                        <th>"59"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Merchant City</th>
+                        <th>"60"</th>
+                        <th>ans</th>
+                        <th>Variable up to "15"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Postal Code</th>
+                        <th>"61"</th>
+                        <th>ans</th>
+                        <th>Variable up to "10"</th>
+                        <th>O</th>
+                        <th align="left"></th>
+                    </tr>
+                    <tr>
+                        <th>Additional Data Field Template</th>
+                        <th>"62"</th>
+                        <th>S</th>
+                        <th>Variable up to "99"</th>
+                        <th>O</th>
+                        <th align="left">• The Additional Data Field Template includes information that may be provided by the Merchant or may be populated by the mobile application to enable or facilitate certain use cases.<br><br>• For the list of data objects that can be included in this template, please refer to Table 3.7.</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Information - Language Template</th>
+                        <th>"64"</th>
+                        <th>S</th>
+                        <th>Variable up to "99"</th>
+                        <th>O</th>
+                        <th align="left">• The Merchant Information — Language Template includes merchant information in an alternate language and may use a character set different from the Common Character Set.<br>• It provides an alternative to the merchant information under the root.<br><br>• For the list of data objects that can be included in this template, please refer to Table 3.8.</th>
+                    </tr>
+                    <tr>
+                        <th>RFU for EMVCo</th>
+                        <th>"65" - "79"</th>
+                        <th>S</th>
+                        <th>Each variable up to "99"</th>
+                        <th>O</th>
+                        <th align="left">• Data objects reserved for EMVCo</th>
+                    </tr>
+                    <tr>
+                        <th>Unreserved Templates</th>
+                        <th>"80" - "99"</th>
+                        <th>S</th>
+                        <th>Each variable up to "99"</th>
+                        <th>O</th>
+                        <th align="left">• Unreserved Templates</th>
+                    </tr>
+                    <tr>
+                        <th>CRC</th>
+                        <th>"63"</th>
+                        <th>ans</th>
+                        <th>"04"</th>
+                        <th>M</th>
+                        <th align="left"></th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-9').style.display='none'; window.location.href='emvco_merchant.html#article-3-2'">Hide Table: 3.6</button>
+            </div>
+            <p><button onclick="document.getElementById('toggle-table-emvco-m-p-10').style.display='inline'">Show Table: 3.7 - Data Objects for Additional Data Field Template (ID "62")</button></p>
+            <div id="toggle-table-emvco-m-p-10" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="5"><h4>Table 3.7: Data Objects for Additional Data Field Template<br>(ID "62")</h4></th></tr>
+                    <tr>
+                        <th><b>Name</b></th>
+                        <th><b>ID</b></th>
+                        <th><b>Format</b></th>
+                        <th><b>Length</b></th>
+                        <th><b>Presence</b></th>
+                    </tr>
+                    <tr>
+                        <th>Bill Number</th>
+                        <th>"01"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number</th>
+                        <th>"02"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Store Label</th>
+                        <th>"03"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Loyalty Number</th>
+                        <th>"04"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Reference Label</th>
+                        <th>"05"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Customer Label</th>
+                        <th>"06"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Terminal Label</th>
+                        <th>"07"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Purpose of Transaction</th>
+                        <th>"08"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Additional Consumer Data Request</th>
+                        <th>"09"</th>
+                        <th>ans</th>
+                        <th>Variable up to "03"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Tax ID</th>
+                        <th>"10"</th>
+                        <th>ans</th>
+                        <th>Variable up to "20"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Merchant Channel</th>
+                        <th>"11"</th>
+                        <th>ans</th>
+                        <th>"03"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>RFU for EMVCo</th>
+                        <th>"12" - "49"</th>
+                        <th>S</th>
+                        <th>Variable</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th>Payment System specific templatess</th>
+                        <th>"50" - "99"</th>
+                        <th>S</th>
+                        <th>Variable</th>
+                        <th>O</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-emvco-m-p-10').style.display='none'; window.location.href='emvco_merchant.html#article-3-2'">Hide Table: 3.7</button>
+            </div>
+            <p>Each of the data objects with IDs "01" to "08" in Table 3.7 can be used in two ways: either the merchant can provide both the ID and its meaningful value or the merchant can include the ID with a special value to have the mobile application prompt the consumer to input this information.</p>
+            <p>To prompt the consumer for one or more of these values, the merchant includes the respective IDs in this template each with a length of "03" and with a value equal to "***".</p>
+            <p>When the consumer is prompted by the mobile application to enter a value for any of these data objects, the length of the value to be entered should not exceed the length as indicated in Table 3.7.</p>
+            <p>The data object with the ID "09" contains one or more values that indicate to the mobile application the data to provide as part of the transaction initiation request. This data should already be known by the mobile application, and the consumer should not be unnecessarily prompted for the data.</p>
+            
+        </article>
+
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-CL" class="uk-article-title uk-margin-medium-bottom">Changelog<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <div class="tm-timeline uk-margin-large-top uk-margin-xlarge-bottom">
+                <div class="tm-timeline-entry">
+                    <div class="tm-timeline-time">
+                        <h4>November, 2020</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.1</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>Incorporated changes described in the following Specification Bulletins:</li>
+                            <li>• SB-206: Clarifications for EMV QR Code Specifications</li>
+                            <li>• SB-229: EMV QR Code Merchant-Presented Mode RFU Processing and New Data Objects</li>
+                            <li>• SB-244: Clarification of Transaction Amount in EMV QR Code Merchant-Presented Mode</li>
+                            <br>
+                            <li>Other editorial changes:</li>
+                            <li>• Updating Table A.1: QR Code Data Objects by putting RFU for EMVCo (ID "65" - "79") and Merchant Account Information (ID "02" - "51") in alpha order in the table.</li>
+                            <li>• Changing the requirement number from 6.2.1.1 to 4.2.1.1 and table number from table 4.6 to 3.6 in the example in 1.3.3 Requirement Numbering.</li>
+                            <li>• Editorial changes from the SB-224:</li>
+                            <li>&nbsp;&nbsp;1. Adding 'in which' to clarify the environment in the Meaning of Merchant Channel in Table 3.5: Additional Data Objects.</li>
+                            <li>&nbsp;&nbsp;2. Adding table numbers and names the three Merchant Channel data object tables in 4.8.1.6</li>
+                            <li>&nbsp;&nbsp;3. Adding an Annex B.8 Merchant Channel to include Table B.7: Examples of Merchant Channel Use Cases, changing table number from B.8 to B.7.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>July, 2017</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.0</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>Initial Release</li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<div class="uk-margin-large-top uk-section-primary">
+    <div class="uk-container">
+        <hr class="uk-margin-remove">
+    </div>
+</div>
+
+
+<footer class="uk-section tm-primary-color-dark uk-light uk-text-center">
+    <div class="uk-container">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                <li class="uk-first-column"><a href="index.html">Index</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="download.html">Download</a></li>
+            </ul>
+        </div>
+
+        <div class="uk-margin-medium tm-text-xsmall uk-text-meta copyright">Made by a human somewhere on the planet earth</div>
+
+    </div>
+</footer>
+
+</body>
+
+</html>

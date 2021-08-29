@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QR Specifications - SGQR</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,800%7CWork+Sans:200,300%7CJosefin+Sans:100" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/uikit.min.js" defer></script>
+    <script src="js/uikit-icons.min.js" defer></script>
+    <script src="js/index.js" defer></script>
+</head>
+
+<body class="uk-background-primary uk-light">
+
+
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+
+        <nav class="uk-navbar-container uk-margin uk-light">
+            <div class="uk-container">
+                <div data-uk-navbar>
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo uk-text-small" href="index.html">EMVco/SG QR</a>
+                    </div>
+                    <div class="uk-navbar-center uk-visible@m">
+
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="index.html">Index</a></li>
+                            <li ><a href="faq.html">FAQ</a></li>
+                            <li ><a href="changelog.html">Changelog</a></li>
+                            <li ><a href="download.html">Download</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+
+<section class="tm-margin-large-top">
+    <div class="uk-container">
+        <h1 class="uk-margin-medium-bottom uk-heading-hero">Specifications: SGQR</h1>
+        <ul class="uk-breadcrumb uk-margin-medium-bottom">
+            <li><a href="index.html">Index</a></li>
+            <li><a href="category.html">Specification Details</a></li>
+            <li><span href="sgqr.html">SGQR</span></li>
+        </ul><br>
+        <hr class="uk-margin-remove">
+
+            <h2 id="download-1" class="uk-margin-medium-bottom">Download PDF</h2>
+            <table class="uk-table uk-table-divider uk-table-middle">
+                <tbody>
+                    <tr>
+                        <td><a href="./assets/SGQR_Specifications_v1.7.pdf"><span data-uk-icon="icon: download; ratio: 1.4"></span></a></td>
+                        <td>1.7</td>
+                        <td></td>
+                        <td>SGQR_Specifications_v1.7.pdf</td>
+                        <td>May 31, 2018</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+        <hr class="uk-margin-remove">
+        <ul class="uk-list uk-list-large uk-margin-medium-top">
+            <li><a href="#article-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> 1. Introduction</a></li>
+            <li><a href="#article-1-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.1 Purpose</a></li>
+            <li><a href="#article-1-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.2 Background on SGQR</a></li>
+            <li><a href="#article-1-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.3 Scope</a></li>
+            <li><a href="#article-1-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.4. References</a></li>
+            <li><a href="#article-1-5" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;1.5. Abbreviations and Terminology</a></li>
+            <br>
+            <li><a href="#article-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> 2. Data Objects for Payment or Merchant use in Singapore</a></li>
+            <li><a href="#article-2-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;2.1 SGQR Data Objects</a></li>
+            <li><a href="#article-2-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;2.2 SGQR ID (ID "51")</a></li>
+            <li><a href="#article-2-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;2.3 Payment Systems Accepted in Singapore (ID "26" to ID "50")</a></li>
+            <li><a href="#article-2-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;2.4 Additional Data Field Template (ID "62")</a></li>
+            <br>
+            <li><a href="#article-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> ANNEX A: Sample SGQR Code</a></li>
+            <li><a href="#article-3-1" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.1 QR Code Conventions</a></li>
+            <li><a href="#article-3-2" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.2 Merchant Account Information</a></li>
+            <li><a href="#article-3-3" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.3 SG Merchant ID (ID "51")</a></li>
+            <li><a href="#article-3-4" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.4 Additional Merchant Information</a></li>
+            <li><a href="#article-3-5" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.5 Additional Data Field Template</a></li>
+            <li><a href="#article-3-6" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.6 CRC</a></li>
+            <li><a href="#article-3-7" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> &nbsp;&nbsp;A.7 Representation</a></li>
+            <br>
+            <li><a href="#article-CL" data-uk-scroll="duration: 400; offset: 140" class="hvr-forward"><span data-uk-icon="icon: arrow-right"></span> Changelog</a></li>
+        </ul>
+        <br>
+        <hr class="uk-margin-remove">
+        <br>
+            <h2 id="article-1" class="uk-article-title uk-margin-medium-bottom">1. Introduction<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-1" class="uk-article-title uk-margin-medium-bottom">1.1 Purpose<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>This document provides the specifications for a common QR code for epayments in Singapore (“SGQR”), and are meant to allow for the presentment of a single SGQR at each merchant’s point of sale.</p>
+            <p>The SGQR specifications are to contain the merchant’s choice of international as well as domestic payment schemes – hence multiple merchant acquirers and different Payment Systems - in a single QR Code.</p>
+            <p>These specifications also aim to provide clarity in the implementation of SGQR, alignment in user applications and overall interoperability for streamlined QR payments in Singapore.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-2" class="uk-article-title uk-margin-medium-bottom">1.2 Background on SGQR<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <p>There has been a recent global proliferation of payment acceptance via QR codes from many different schemes.</p>
+            <p>Singapore is part of this emerging wave and she is beginning to see such similar growth and concurrently fragmentation in QR codes at merchants.</p>
+            <p>The Singapore Payments Council recognised the benefits in simplifying and streamlining the merchant and consumer QR payment experience.</p>
+            <p>The Singapore Payments Council authorised the creation of the SGQR Taskforce on 11 August 2017 to achieve an SGQR in terms of specifications and overall governance.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-3" class="uk-article-title uk-margin-medium-bottom">1.3 Scope<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>1.3.1</h3>
+            <p>In conjunction with SGQR being merchant presented QR standards, these SGQR specifications also means that the paying party will sending push payment data when the paying party scans the QR code of receiving party.</p>
+            <h3>1.3.2</h3>
+            <p>While the focus of this Specifications is primarily relevant to merchant presented static QR code, it can apply to dynamic merchant presented QR code used by the Payment Systems. Payments of C2B, B2B and P2P nature are supported in this document.</p>
+            <h3>1.3.3</h3>
+            <p>The following issues are not covered:<br>
+                • Specified merchant use cases e.g. merchant’s bill payment<br>
+                • SGQR Centralised Repository, which keeps the records and generates the SGQR<br>
+                • The governance process of the SGQR<br>
+                • Detailed payload of individual Payment System, protocol, and security<br>
+                • Acquiring, reconciliation, settlement with the merchant<br>
+                • Branding of Payment Systems or SGQR Marks<br>
+                • Change management of the SGQR (e.g. replacement, termination, etc)</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-4" class="uk-article-title uk-margin-medium-bottom">1.4 References<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h5>The SGQR specifications are largely conformed to the following references:</h5>
+            <p>1. <u>Ref [A] - EMV QR Code Specifications for Payment Systems (“EMV QRCPS”)</u> – Merchant-Presented Mode. Version 1.0, July 2017<br>
+                2. <u>Ref [B] - ISO 18245</u>. Retail financial services – Merchant category codes<br>
+                3. <u>Ref [C] - ISO 4217</u>. Codes for the representation of currencies and funds<br>
+                4. <u>Ref [D] - ISO 3166-1 alpha 2</u>. Codes for the representation of names of countries and their subdivisions—Part 1: Country codes, using two-letter country codes<br>
+                5. <u>Ref [E]</u> – AID consists of an RIF registered with ISO and optionally a PIX as defined by ISO 7816-4.<br>
+                6. <u>Ref [F]</u> – UUID as defined in the Internet Engineering Task Force (IETF) RFC 4122: <a href="https://tools.ietf.org/html/rfc4122">https://tools.ietf.org/html/rfc4122</a></p>
+            <p><u>IMPORTANT: The readers shall read this document in conjunction with the Ref [A].</u></p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-1-5" class="uk-article-title uk-margin-medium-bottom">1.5 Abbreviations and Terminology<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h5>Abbreviations: Description</h5>
+            <p><u>ANS</u>: Alphanumeric Special</p>
+            <p><u>B2B</u>: Business-to-Business</p>
+            <p><u>C2B</u>: Customer-to-Business</p>
+            <p><u>CRC</u>: Cyclic Redundancy Check</p>
+            <p><u>P2P</u>: Person-to-Person</p>            
+            <p><u>QR Code</u>: Quick Response Code</p>
+            <p><u>SGQR Centralised Repository or “Repository”</u>: The Repository will be the national issuer/database/repository for SGQR, overseen by the SGQR Governing Committee. It will be the central point for acquirers, members and issuers engagement.</p>
+            <p><u>SGQR Governing Committee</u>: This Committee will oversee the maintenance, update, specifications and governance of the SGQR.</p>
+            <p><u>UUID</u>: Universally Unique Identifier</p>
+        </article>
+        <br><br><br>
+            <h2 id="article-2" class="uk-article-title uk-margin-medium-bottom">2. Data Objects for Payment or Merchant use in Singapore<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-2-1" class="uk-article-title uk-margin-medium-bottom">2.1 SGQR Data Objects<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>2.1.1</h3>
+            <p><u>The readers shall read this section in conjunction with the Ref [A] – EMV QRCPS.</u></p>
+            <h3>2.1.2</h3>
+            <p>This section specifies the customisation of some data objects to Ref [A], for the purpose of payments to the SGQR.</p>
+            <h3>2.1.3</h3>
+            <p>Table 2-1 lists the following data object characteristics: name, ID, format, length of the value field, and whether the presence of the data object at the root level of the SGQR Code is Mandatory (M), Conditional (C), or Optional (O).</p>
+            <h3>2.1.4</h3>
+            <p>Format of the data object field can be either Numeric (N), Alphanumeric Special (ans), or String (S). Note that Numeric is a subset of Alphanumeric Special and that Alphanumeric Special is a subset of String.</p>
+            <p><button onclick="document.getElementById('toggle-table-SGQR2-1').style.display='inline'">Show Table: 2.1</button></p>
+            <div id="toggle-table-SGQR2-1" style="display: none;">
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr><th colspan="6"><h4>Table 2.1: Details of SGQR Data Objects</h4></th></tr>
+                <tr>
+                    <th><b>Name</b></th>
+                    <th><b>ID</b></th>
+                    <th><b>Format</b></th>
+                    <th><b>Length</b></th>
+                    <th><b>Presence</b></th>
+                    <th><b>Comment</b></th>
+                </tr>
+                <tr>
+                    <th align="left">Payload Format Indicator</th>
+                    <th>"00"</th>
+                    <th>N</th>
+                    <th>"02"</th>
+                    <th>M</th>
+                    <th align="left">Refer to Ref [A].</th>
+                </tr>
+                <tr>
+                    <th align="left">Point of Initiation Method</th>
+                    <th>"01"</th>
+                    <th>N</th>
+                    <th>"02"</th>
+                    <th>O</th>
+                    <th align="left">Refer to Ref [A].</th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Account Information</th>
+                    <th>"02" - "25"</th>
+                    <th>ans</th>
+                    <th>Variable up to "99"</th>
+                    <th>M</th>
+                    <th align="left">1. Refer to Ref [A].<br>2. For EMV Schemes.<br>3. To include for the Merchant Account Information of a Payment System.</th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Account Information</th>
+                    <th>"26" - "50"</th>
+                    <th>ans</th>
+                    <th>Variable up to "99"</th>
+                    <th>M</th>
+                    <th align="left">1. Refer to 4.7.11 of Ref [A] and section 2.3.<br>2. For Payment Systems accepted by Merchants in Singapore and registered with the SGQR Centralised Repository.<br>3. To include for the Merchant Account Information of a Payment System.<br>4. The 1st Merchant Account Information included will take ID "26", with subsequent Merchant Account Information (i.e. subsequent accepted scheme) to be added sequentially (e.g. ID "27" and so forth).</th>
+                </tr>
+                <tr>
+                    <th align="left">SGQR Identity Information ("SGQR ID")</th>
+                    <th>"51"</th>
+                    <th>ans</th>
+                    <th>Variable up to "99"</th>
+                    <th>M</th>
+                    <th align="left">1. Refer to Section 2.2.<br>2. SGQR ID is fixed for all QR code at ID "51".<br>3. To be included upon generation of the QR code.<br>4. This ID will be a unique SGQR ID determined by the Repository.<br>5. The assigned ID and other data fields except for version number and revision date, will remain even with the inclusion of new acquirers or payment schemes in the same QR.<br>6. Only the version number and revision date will change with every modification.</th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Category Code</th>
+                    <th>"52"</th>
+                    <th>N</th>
+                    <th>"04"</th>
+                    <th>M</th>
+                    <th align="left">1. Refer to Ref [B].<br>2. If this is not utilised by a payment scheme, "0000" is to be added in.<br>3. When a payment system needs the data, it will fill or replace with a valid MCC, according to Ref [B].</th>
+                </tr>
+                <tr>
+                    <th align="left">Transaction Currency</th>
+                    <th>"53"</th>
+                    <th>N</th>
+                    <th>"03"</th>
+                    <th>M</th>
+                    <th align="left">1. Refer to Ref [C].<br>2. If it is not populated and a payment system does not need it, it will be filled with a default "702" (which is SGD).<br>3. When a payment service needs the data other than default, it will full or replace with a valid Currency Code, according to Ref [C].</th>
+                </tr>
+                <tr>
+                    <th align="left">Transaction Amount</th>
+                    <th>"54"</th>
+                    <th>ans</th>
+                    <th>Variable up to "13"</th>
+                    <th>C</th>
+                    <th align="left">Absent if the mobile application is to prompt the consumer to enter the transaction amount.<br>Present otherwise.</bre></th>
+                </tr>
+                <tr>
+                    <th align="left">Tip or Convenience Indicator</th>
+                    <th>"55"</th>
+                    <th>N</th>
+                    <th>"02"</th>
+                    <th>O</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th align="left">Value of Convenience Fee Fixed</th>
+                    <th>"56"</th>
+                    <th>ans</th>
+                    <th>Variable up to "13"</th>
+                    <th>C</th>
+                    <th rowspan="2" align="left">Presence of these data objects depends on the presence of the ID "55" - Tip or Convenience Indicator.</th>
+                </tr>
+                <tr>
+                    <th align="left">Value of Convenience Fee Percentage</th>
+                    <th>"57"</th>
+                    <th>ans</th>
+                    <th>Variable up to "05"</th>
+                    <th>C</th>
+                </tr>
+                <tr>
+                    <th align="left">Country Code</th>
+                    <th>"58"</th>
+                    <th>ans</th>
+                    <th>"02"</th>
+                    <th>M</th>
+                    <th align="left">It will be filled with a default "SG".<br>Refer to Ref [D].</th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Name</th>
+                    <th>"59"</th>
+                    <th>ans</th>
+                    <th>Variable up to "25"</th>
+                    <th>M</th>
+                    <th align="left">This is the trade name, store name or "doing-business-as" name.</th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant City</th>
+                    <th>"60"</th>
+                    <th>ans</th>
+                    <th>Variable up to "15"</th>
+                    <th>M</th>
+                    <th align="left">It will be filled with default "Singapore".</th>
+                </tr>
+                <tr>
+                    <th align="left">Postal Code</th>
+                    <th>"61"</th>
+                    <th>ans</th>
+                    <th>"06"<br>Variable up to "10"</th>
+                    <th>O</th>
+                    <th align="left">If this is relevant to the payment system, postal code where the QR is deployed, will be added.</th>
+                </tr>
+                <tr>
+                    <th align="left">Additional Data Field Template</th>
+                    <th>"62"</th>
+                    <th>S</th>
+                    <th>Variable up to "99"</th>
+                    <th>O</th>
+                    <th align="left">1. This includes information that may be provided by the Merchant or may be populated by the mobile application to enable or facilitate certain use cases.<br>2. For the list of data objects that can be included in this template, please refer to Table 3.7 of Ref [A].</th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Information - Language Template</th>
+                    <th>"64"</th>
+                    <th>S</th>
+                    <th>Variable up to "99"</th>
+                    <th>O</th>
+                    <th align="left">1. This include merchant information in an alternate language and may use a character set different from the Common Character Set. It provides an alternative to the merchant information under the root.<br>2. For the list of data objects that can be included in this template, please refer to Table 3.8 or Ref [A].</th>
+                </tr>
+                <tr>
+                    <th align="left">RFU for EMVCo</th>
+                    <th>"65" - "79"</th>
+                    <th>S</th>
+                    <th>Variable up to "99"</th>
+                    <th>O</th>
+                    <th align="left">Data objects for EMVCo.</th>
+                </tr>
+                <tr>
+                    <th align="left">Unreserved templates</th>
+                    <th>"80" - "99"</th>
+                    <th>S</th>
+                    <th>Variable up to "99"</th>
+                    <th>O</th>
+                    <th align="left">1. Unreserved templates.<br>2. Use is subject to the consent of SGQR Governing Committee.</th>
+                </tr>
+                <tr>
+                    <th align="left">CRC</th>
+                    <th>"63"</th>
+                    <th>ans</th>
+                    <th>"04"</th>
+                    <th>M</th>
+                    <th align="left">1. Checksum calculated over all the data objects included in the QR Code and will be the <u>last</u> object under the root and allows the mobile application to check for the integrity of the data scanned without having to parse all of hte data objects.<br>2. Refer to 4.7.3 of Ref [A].</th>
+                </tr>
+            </table>
+            <button onclick="document.getElementById('toggle-table-SGQR2-1').style.display='none'; window.location.href='sgqr.html#article-2-1'">Hide Table: 2.1</button>
+            </div>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-2-2" class="uk-article-title uk-margin-medium-bottom">2.2 SGQR ID (ID "51")<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>2.2.1</h3>
+            <p>The SGQR ID is used to identify each SGQR label and is fixed as Data Objects ID “51” and is only generated and modified by the SGQR Centralised Repository (“Repository”).</p>
+            <h3>2.2.2.</h3>
+            <p>At the first generation of a SGQR, the Repository will provide a unique SGQR ID for that SGQR which composes of the date of first creation and a number assigned by the Central Repository.</p>
+            <h3>2.2.3</h3>
+            <p>Other data objects in ID “51” includes merchant’s physical location and a miscellaneous information field. The miscellaneous information field allows for terminal ID, counter ID or account differentiation for the same merchant. All these data objects are also fixed at the first generation of that SGQR.</p>
+            <h3>2.2.4</h3>
+            <p>In ID “51”, only data objects of version number and new version date will increment whenever the SGQR content is updated.</p>
+            <p><button onclick="document.getElementById('toggle-table-SGQR2-2').style.display='inline'">Show Table: 2.2</button></p>
+            <div id="toggle-table-SGQR2-2" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="6"><h4>Table 2.2: Data Object ID allocation in SGQR ID (ID "51")</h4></th></tr>
+                    <tr>
+                        <th><b>Name</b></th>
+                        <th><b>ID</b></th>
+                        <th><b>Format</b></th>
+                        <th><b>Length</b></th>
+                        <th><b>Presence</b></th>
+                        <th><b>Comment</b></th>
+                    </tr>
+                    <tr>
+                        <th align="left">Unique Identifier</th>
+                        <th>"00"</th>
+                        <th>ans</th>
+                        <th>"07"</th>
+                        <th>M</th>
+                        <th align="left">"SG.SGQR"</th>
+                    </tr>
+                    <tr>
+                        <th align="left">SGQR ID Number</th>
+                        <th>"01"</th>
+                        <th>ans</th>
+                        <th>"12"</th>
+                        <th>M</th>
+                        <th align="left">1. "YYMMDDNNNNNN", where:<br>&nbsp;&nbsp;&nbsp;A. "YYMMDD" denotes the first create date.<br>&nbsp;&nbsp;&nbsp;B. "NNNNNN" will be unique hexadecimal number for that creation date.<br>2. Fixed on first creation.</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Version</th>
+                        <th>"02"</th>
+                        <th>ans</th>
+                        <th>"07"</th>
+                        <th>M</th>
+                        <th align="left">1. "AA.NNNN", where:<br>&nbsp;&nbsp;&nbsp;A. "AA" denotes the major version of the SGQR Spec (e.g. AA will be "2" when the version of the SGQR Specification is "2.5".<br>&nbsp;&nbsp;&nbsp;B. "NNNN" denotes the version number of the QR label. Next version of QR will be reset when there is an increment to "AA".<br>2. Changes with each QR update.</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Postal Code</th>
+                        <th>"03"</th>
+                        <th>N</th>
+                        <th>"06"<br>Variable up to "10"</th>
+                        <th>M</th>
+                        <th align="left">Indicates the location of the physical merchant. In other use cases where physical location is not applicable, it will be the registered postal code of the merchant.</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Level Number</th>
+                        <th>"04"</th>
+                        <th>an</th>
+                        <th>"02"<br>Variable up to "03"</th>
+                        <th>M</th>
+                        <th align="left">1. The floor level of the location of the physical merchant (e.g. 03,B2).<br>2. If level is not applicable, it will be set to "00".</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Unit Number</th>
+                        <th>"05"</th>
+                        <th>an</th>
+                        <th>Variable up to "05"</th>
+                        <th>M</th>
+                        <th align="left">1. The unit number of the location of the physical merchant in a building. This is not the building or block number.<br>2. If unit number is not applicable, it will be set to "00".</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Miscellaneous</th>
+                        <th>"06"</th>
+                        <th>ans</th>
+                        <th>Variable up to "10"</th>
+                        <th>M</th>
+                        <th align="left">May be used to identify specific counters or terminal IDs at the merchant location.</th>
+                    </tr>
+                    <tr>
+                        <th align="left">New Version Date</th>
+                        <th>"07"</th>
+                        <th>N</th>
+                        <th>"08"</th>
+                        <th>M</th>
+                        <th align="left">1. Date of revised QR generation.<br>2. Changes on each update.</th>
+                    </tr>
+                </table>
+                <button onclick="document.getElementById('toggle-table-SGQR2-2').style.display='none'; window.location.href='sgqr.html#article-2-2'">Hide Table: 2.2</button>
+            </div>
+            <h3>2.2.5</h3>
+            <p>Any payment schemes/acquirers can use the ID “51” for its purpose with the merchants.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-2-3" class="uk-article-title uk-margin-medium-bottom">2.3 Payment Systems Accepted in Singapore<br>(ID "26" to ID "50")<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>2.3.1</h3>
+            <p>The ID "26" to "50" will not be pre-assigned to a specified payment system, it will be on the first-come-first-service basis, where the Merchant Account Information of a Payment System should be filled in chronological order from the lowest available ID onwards (ie stating from ID "26"). The next payment system shall fill the next numerically higher ID.</p>
+            <h3>2.3.2</h3>
+            <p>Payment System shall register with the SGQR Centralised Issuance Agency to use the ID "26" to ID "50".</p>
+            <h3>2.3.3</h3>
+            <p>The Payment System shall use a Global Unique Identifier placed before the merchant account information. The Global Unique Identifier is specific to each scheme / Payment System, and will be in the one of the following formats:<br>
+                • an Application Identifier (AID) (Refer to Ref [E]);<br>
+                • a [UUID] without the hyphen (-) separators (Refer to Ref [F]); or<br>
+                • a reverse domain name.</p>
+            <h3>2.3.4</h3>
+            <p>Each Payment System shall not take more than one ID.</p>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-2-4" class="uk-article-title uk-margin-medium-bottom">2.4 Additional Data Field Template<br>(ID "62")<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>2.4.1</h3>
+            <p>ID "62" is to be used to include additional information for certain purposes of payment collection or obtaining necessary information. One of the possible use case will be for bill payment collection.</p>
+            <h3>2.4.2</h3>
+            <p>If ID "62" is present in the SGQR, the Additional Data Field Template shall contain at least one data object and the content of data object ID "01" to 08" shall be "***"" or a value defined by the merchant.<br>The "***"" indicates that the mobile application needs to obtain the necessary information from the consumer or user.<br>Refer to Table 3.5 of Ref [A] for details on the meaning of each data objects.<br>Table 2.3 illustrates the structure of ID "62".</p>
+            <p><button onclick="document.getElementById('toggle-table-SGQR2-3').style.display='inline'">Show Table: 2.3</button></p>
+            <div id="toggle-table-SGQR2-3" style="display: none;">
+                <table class="uk-table" border="1" style="width: 100%;">
+                    <tr><th colspan="5"><h4>Table 2.3: Data Object ID allocation for Additional Data Field Template (ID "62")</h4></th></tr>
+                    <tr>
+                        <th><b>Name</b></th>
+                        <th><b>ID</b></th>
+                        <th><b>Format</b></th>
+                        <th><b>Length</b></th>
+                        <th><b>Presence</b></th>
+                    </tr>
+                    <tr>
+                        <th align="left">Bill Number<br>(Message or Reference)</th>
+                        <th>"01"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Mobile Number</th>
+                        <th>"02"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Store Label</th>
+                        <th>"03"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Loyalty Number</th>
+                        <th>"04"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Reference Label</th>
+                        <th>"05"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Customer Label</th>
+                        <th>"06"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Terminal Label</th>
+                        <th>"07"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Purpose of Transaction</th>
+                        <th>"08"</th>
+                        <th>ans</th>
+                        <th>Variable up to "25"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Additional Consumer Data Request</th>
+                        <th>"09"</th>
+                        <th>ans</th>
+                        <th>Variable up to "03"</th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">RFU for EMVCo</th>
+                        <th>"10" - "49"</th>
+                        <th>S</th>
+                        <th></th>
+                        <th>O</th>
+                    </tr>
+                    <tr>
+                        <th align="left">Payment System Specific Templates</th>
+                        <th>"50" - "99"</th>
+                        <th>S</th>
+                        <th></th>
+                        <th>O</th>
+                    </tr>
+                    </table>
+                    <button onclick="document.getElementById('toggle-table-SGQR2-3').style.display='none'; window.location.href='sgqr.html#article-2-4'">Hide Table: 2.3</button>
+                    </div>
+            <h3>2.4.3</h3>
+            <p>Additional Consumer Data Request Data Object ID "09" (within ID "62") may contain "A", "M" and/or "E" which the mobile application needs to provide to complete the transaction without prompting the consumers.<br>If combination of more than one character is presented, the data corresponding to the character is required to complete the transaction. One instance of each character shall be used.<br>The definition of the character is as:<br>
+                • "A" : Address of the consumer<br>
+                • "M" : Mobile number of the consumer<br>
+                • "E" : Email address of the consumer</p>
+            <h3>2.4.4</h3>
+            <p>Merchant should map its requirements to the relevant data objects in ID "62".</p>
+            <h3>2.4.5</h3>
+            <p>Payment Application by Payment System should display all the Data Objects in ID "62", whenever possible.<br>Otherwise it should minimally display Data Object ID "01" (Bill Number) and those defined by "***"" of ID "62" to consumer when a QR with ID "62" data objects, is scanned.<br>During the transaction, Payment System capture all the Data Objects in and for ID "62", and return them to the Merchant.</p>
+        </article>
+<br><br><br>
+            <h2 id="article-3" class="uk-article-title uk-margin-medium-bottom">ANNEX A: Sample SGQR Code<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-1" class="uk-article-title uk-margin-medium-bottom">A.1 QR Code Conventions<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Payload Format Indicator</th>
+                    <th>"000201"</th>
+                    <th align="left">• Version 01 (Default)</th>
+                </tr>
+                <tr>
+                    <th align="left">• Point of initiation Method</th>
+                    <th>"010211"</th>
+                    <th align="left">• "11" for Static QR Code</th>
+                </tr>
+                </table>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-2" class="uk-article-title uk-margin-medium-bottom">A.2 Merchant Account Information<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>A.2.1 - VISA</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• VISA ID</th>
+                    <th>"02164761360000000*17"</th>
+                    <th align="left">• MID : 47613617</th>
+                </tr>
+                </table>
+            <h3>A.2.2 - Mastercard</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Mastercard ID</th>
+                    <th>"0415512345678912345"</th>
+                    <th align="left">• 512345678912345</th>
+                </tr>
+            </table>
+            <h3>A.2.3 - American Express</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• AMEX ID "11"</th>
+                    <th>"11101234567890"</th>
+                    <th align="left">• 1234567890</th>
+                </tr>
+                <tr>
+                    <th align="left">• AMEX ID "12"</th>
+                    <th>"1215312345678901234"</th>
+                    <th align="left">• 312345678901234</th>
+                </tr>
+            </table>
+            <h3>A.2.4 - UnionPay International</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• UPi ID</th>
+                    <th>"15312500034400010344500034453110001"</th>
+                    <th align="left">• 2500034400010344500034453110001</th>
+                </tr>
+            </table>
+            <h3>A.2.5 - Singtel Dash</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"2633"</th>
+                    <th align="left">• Floating ID "26".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0015SG.COM.DASH.WWW"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account</th>
+                    <th>"01100000055501"</th>
+                    <th align="left">• Merchant ID : 0000055501</th>
+                </tr>
+            </table>
+            <h3>A.2.6 - LiquidPay</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"2767"</th>
+                    <th align="left">• Floating ID "27".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0014A0000007620001"</th>
+                    <th align="left">• AID : A0000007620001</th>
+                </tr>
+                <tr>
+                    <th align="left">• URL</th>
+                    <th>"0120COM.LQDPALLIANCE.WWW"</th>
+                    <th align="left">• Reverse URL</th>
+                </tr>
+                <tr>
+                    <th align="left">• Payee ID</th>
+                    <th>"0215123456789012345"</th>
+                    <th align="left">• 1234567898012345</th>
+                </tr>
+                <tr>
+                    <th align="left">• Service Code</th>
+                    <th>"030200"</th>
+                    <th align="left">• ID may be 00, 11, 12 or 13</th>
+                </tr>
+            </table>
+            <h3>A.2.7 - OCBC - P2P</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"2866"</th>
+                    <th align="left">• Floating ID "28".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0011SG.COM.OCBC"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account</th>
+                    <th>"0147OCBCP2P629A358D-ECE7-4554-AD56-EBD12D84CA7E4F73"</th>
+                    <th align="left">• OCBCP2P629A358D-ECE7-4554-AD56-EBD12D84CA7E4F73</th>
+                </tr>
+            </table>
+            <h3>A.2.8 - Ezi-Wallet</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"2950"</th>
+                    <th align="left">• Floating ID "29".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0006SG.EZI"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account</th>
+                    <th>"013603600006-76bb-4a5aaa1a-fbcb64d6ecf5"</th>
+                    <th align="left">• 03600006-76bb-4a5a-aa1afbcb64d6ecf5</th>
+                </tr>
+            </table>
+            <h3>A.2.9 - EZ-Link</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"3085"</th>
+                    <th align="left">• Floating ID "30".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0013SG.COM.EZLINK"</th>
+                    <th align="left">• Reverse domain name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant ID</th>
+                    <th>"01201234567890123456-123"<br></th>
+                    <th align="left">• MID with sub-ID MID</th>
+                </tr>
+                <tr>
+                    <th align="left">• SGQR Indicator</th>
+                    <th>"0204SGQR"</th>
+                    <th align="left">• SGQR</th>
+                </tr>
+                <tr>
+                    <th align="left">• Offline Usage</th>
+                    <th>"0324A123456,B123456,C1234567"</th>
+                    <th align="left">• A123456,B123456,C1234567</th>
+                </tr>
+                <tr>
+                    <th align="left">• Verification Code</th>
+                    <th>"0404A23X"</th>
+                    <th align="left">• A23X</th>
+                </tr>
+            </table>
+            <h3>A.2.10 - GrabPay</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"3126"</th>
+                    <th align="left">• Floating ID "31".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0008COM.GRAB"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account</th>
+                    <th>"0110A93FO3230Q"</th>
+                    <th align="left">• Grab ID : A93FO3230Q</th>
+                </tr>
+            </table>
+            <h3>A.2.11 - DBS Paylah!</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"3239"</th>
+                    <th align="left">• Floating ID "32".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0007COM.DBS"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• QR Transaction Ref ID</th>
+                    <th>"01101234567890"</th>
+                    <th align="left">• 1234567890</th>
+                </tr>
+                <tr>
+                    <th align="left">• QR ID</th>
+                    <th>"02101234567890"</th>
+                    <th align="left">• 1234567890</th>
+                </tr>
+            </table>
+            <h3>A.2.12 - NETS</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"3390"</th>
+                    <th align="left">• Floating ID "33".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0013SG.COM.EZLINK"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• QR meta data</th>
+                    <th rowspan="4">"012302014018328311288235900"</th>
+                    <th rowspan="4"></th>
+                </tr>
+                <tr>
+                    <th align="left">&nbsp;&nbsp;&nbsp;- Version (1)</th>
+                </tr>
+                <tr>
+                    <th align="left">&nbsp;&nbsp;&nbsp;- QR Issuer (10)</th>
+                </tr>
+                <tr>
+                    <th align="left">&nbsp;&nbsp;&nbsp;- QR Expiry Timstamp (12)</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant ID</th>
+                    <th>"0215000111870324000"</th>
+                    <th align="left">• Merchant ID: 000111870324000</th>
+                </tr>
+                <tr>
+                    <th align="left">• Terminal ID</th>
+                    <th>"030888587201"</th>
+                    <th align="left">• Terminal ID: 88587201</th>
+                </tr>
+                <tr>
+                    <th align="left">• Transaction Amount Modifier</th>
+                    <th>"09011"</th>
+                    <th align="left">• Editable: 1</th>
+                </tr>
+                <tr>
+                    <th align="left">• Signature</th>
+                    <th>"“99084E5DC3D8"</th>
+                    <th align="left">• Signature: 4E5DC3D8</th>
+                </tr>
+            </table>
+            <h3>A.2.13 - Wechat Pay</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Account Information</th>
+                    <th>"3443"</th>
+                    <th align="left">• Floating ID "34".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0017COM.QQ.WEIXIN.PAY"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account</th>
+                    <th>"01101234567890"</th>
+                    <th align="left">• Merchant ID: 1234567890</th>
+                </tr>
+                <tr>
+                    <th align="left">• Terminal ID</th>
+                    <th>"02041234"</th>
+                    <th align="left">• 1234</th>
+                </tr>
+            </table>
+            <h3>A.2.14 - UOB</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Account Information</th>
+                    <th>"3566"</th>
+                    <th align="left">• Floating ID "35".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0010SG.COM.UOB"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account</th>
+                    <th>"014845D233507F5E8C306E3871A4E9FACA601A80C114B5645E5D"</th>
+                    <th align="left"></th>
+                </tr>
+            </table>
+            <h3>A.2.15 - PayNow</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Account Information</th>
+                    <th>"3694"</th>
+                    <th align="left">• Floating ID "36".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0009SG.PAYNOW"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Proxy Type</th>
+                    <th>"01010"</th>
+                    <th align="left">• 0 – Mobile number (for P2P)<br>• 1 (Not used)<br>• 2 – UEN</th>
+                </tr>
+                <tr>
+                    <th align="left">• Proxy Value</th>
+                    <th>"0216+621234567890123"</th>
+                    <th align="left">• If proxy type is 0, mobile number is &#60;International Dialling Code preceding with '+'&#62; plus &#60;up to 15 digits Mobile Number&#62;<br>• If proxy type is 2, Unique Entity Number (UEN) is 10 alphanumeric characters</th>
+                </tr>
+                <tr>
+                    <th align="left">• Editable Transaction Amount Indicator</th>
+                    <th>"03010"</th>
+                    <th align="left">• "0" – amount cannot be edited<br>• "1" – amount can be edited<br>&nbsp;&nbsp;&nbsp;– If QR has pre-populated amount</th>
+                </tr>
+                <tr>
+                    <th align="left">• Reference</th>
+                    <th>"043512345678901234567890123456789012345"</th>
+                    <th align="left">• Reference to recognize the payer- put in by the Corporate/Merchant/Billing Organisation.<br>• Uneditable by the payer<br>• Reference number: 12345678901234567890123456789012345</th>
+                </tr>
+                <tr>
+                    <th align="left">• QR Expiry Date</th>
+                    <th>"050820201231"</th>
+                    <th align="left">• YYMMDD: 20201231</th>
+                </tr>
+            </table>
+            <h3>A.2.16 - Airpay (SEA)</h3>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">Merchant Account Information</th>
+                    <th>"3727"</th>
+                    <th align="left">• Floating ID "37".<br>• This ID is allocated for the QR only.</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier</th>
+                    <th>"0009SG.AIRPAY"</th>
+                    <th align="left">• Reverse Domain Name</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information</th>
+                    <th>"0110A11BC0000X"</th>
+                    <th align="left">• A11BC0000X</th>
+                </tr>
+            </table>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-3" class="uk-article-title uk-margin-medium-bottom">A.3 SG Merchant ID (ID "51")<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Account Information<br>(ID "51")</th>
+                    <th>"5186"</th>
+                    <th align="left">• Fixed ID: "51"</th>
+                </tr>
+                <tr>
+                    <th align="left">• Global Unique Identifier/th>
+                    <th>"0007SG.SGQR"</th>
+                    <th align="left">• SG.SGQR</th>
+                </tr>
+                <tr>
+                    <th align="left">• SGQR ID Number</th>
+                    <th>"0112180307510317"</th>
+                    <th align="left">• YYMMDDNNNNNN = 180307510317</th>
+                </tr>
+                <tr>
+                    <th align="left">• Version</th>
+                    <th>"020701.0003"</th>
+                    <th align="left">• 01.0003</th>
+                </tr>
+                <tr>
+                    <th align="left">• Postal Code</th>
+                    <th>"0306081006"</th>
+                    <th align="left">• 081006</th>
+                </tr>
+                <tr>
+                    <th align="left">• Level Number</th>
+                    <th>"040202"</th>
+                    <th align="left">• Level 2</th>
+                </tr>
+                <tr>
+                    <th align="left">• Unit Number</th>
+                    <th>"0503138"</th>
+                    <th align="left">• Unit 138</th>
+                </tr>
+                <tr>
+                    <th align="left">• Miscellaneous</th>
+                    <th>"0609Counter01"</th>
+                    <th align="left">• Counter01</th>
+                </tr>
+                <tr>
+                    <th align="left">• New Revision Date</th>
+                    <th>"070820180407"</th>
+                    <th align="left">• 07 April 2018</th>
+                </tr>
+            </table>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-4" class="uk-article-title uk-margin-medium-bottom">A.4 Additional Merchant Information<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• MCC (ID "52")</th>
+                    <th>"52045814"</th>
+                    <th align="left">• "5814" for Hawker Centre</th>
+                </tr>
+                <tr>
+                    <th align="left">• Transaction Currency<br>(ID "53")</th>
+                    <th>"5303702"</th>
+                    <th align="left">• "702" for Singapore Dollar</th>
+                </tr>
+                <tr>
+                    <th align="left">• Country Code (ID "58")</th>
+                    <th>"5802SG"</th>
+                    <th align="left">• "SG" for Singapore</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant Name (ID "59")</th>
+                    <th>"5916FOOD XYZ PTE LTD"</th>
+                    <th align="left">• Food XYZ Pte Ltd</th>
+                </tr>
+                <tr>
+                    <th align="left">• Merchant City (ID "60")</th>
+                    <th>"6009SINGAPORE"</th>
+                    <th align="left">• Singapore</th>
+                </tr>
+                <tr>
+                    <th align="left">• Postal Code (ID "61")</th>
+                    <th>"6106081006"</th>
+                    <th align="left">• 081006</th>
+                </tr>
+            </table>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-5" class="uk-article-title uk-margin-medium-bottom">A.5 Additional Data Field Template<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• Additional Data Field Template<br>(ID "62")</th>
+                    <th>"6223"</th>
+                    <th align="left"></th>
+                </tr>
+                <tr>
+                    <th align="left">• Bill Number</th>
+                    <th>"01081234567R"</th>
+                    <th align="left">• Bill Number : 1234567R</th>
+                </tr>
+                <tr>
+                    <th align="left">• Customer Label</th>
+                    <th>"06078765430"</th>
+                    <th align="left">• Customer Ref : 8765430</th>
+                </tr>
+            </table>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-6" class="uk-article-title uk-margin-medium-bottom">A.6 CRC<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <table class="uk-table" border="1" style="width: 100%;">
+                <tr>
+                    <th><b>Data Object</b></th>
+                    <th><b>Input Characters</b></th>
+                    <th><b>Remarks</b></th>
+                </tr>
+                <tr>
+                    <th align="left">• CRC (ID "62")</th>
+                    <th>"6304317F"</th>
+                    <th align="left">• Checksum: 317F</th>
+                </tr>
+            </table>
+        </article>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-3-7" class="uk-article-title uk-margin-medium-bottom">A.7 Representation<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <h3>A.7.1 In ASCII format</h3>
+            <table class="uk-table" border="1" style="table-layout: fixed; width: 100%;">
+                <tr>
+                    <th style="word-wrap: break-word;">"00020101021102164761360000000*1704155123456789123451110123456789012153123456789012341531250003440001034450003445311000126330015SG.COM.DASH.WWW0110000005550127670014A00000076200010120COM.LQDPALLIANCE.WWW021512345678901234503020028660011SG.COM.OCBC0147OCBCP2P629A358D-ECE7-4554-AD56-EBD12D84CA7E4F7329500006SG.EZI013603600006-76bb-4a5a-aa1afbcb64d6ecf530850013SG.COM.EZLINK01201234567890123456-1230204SGQR0324A123456,B123456,C12345670404A23X31260008COM.GRAB0110A93FO3230Q32390007COM.DBS011012345678900210123456789033900011SG.COM.NETS01230201401832831128823590002150001118703240000308885872010901199084E5DC3D834430017COM.QQ.WEIXIN.PAY011012345678900204123435660010SG.COM.UOB014845D233507F5E8C306E3871A4E9FACA601A80C114B5645E5D36940009SG.PAYNOW010100216+6212345678901230301004351234567890123456789012345678901234505082020123137270009SG.AIRPAY0110A11BC0000X51860007SG.SGQR0112180307510317020701.0003030608100604020205031380609Counter010708201804075204581453037025802SG5916FOOD XYZ PTE LTD6009SINGAPORE6106081006622301081234567R060787654306304317F"</th>
+                </tr>
+            </table>
+            <h3>A.7.2 In hexadecimal format</h3>
+            <table class="uk-table" border="1" style="table-layout: fixed; width: 100%;">
+                <tr>
+                    <th style="word-wrap: break-word;">"30303032303130313032313130323136343736313336303030303030302a3137303431353531323334353637383931323334353131313031323334353637383930313231353331323334353637383930313233343135333132353030303334343030303130333434353030303334343533313130303031323633333030313553472e434f4d2e444153482e57575730313130303030303035353530313237363730303134413030303030303736323030303130313230434f4d2e4c514450414c4c49414e43452e57575730323135313233343536373839303132333435303330323030323836363030313153472e434f4d2e4f434243303134374f43424350325036323941333538442d454345372d343535342d414435362d45424431324438344341374534463733323935303030303653472e455a493031333630333630303030362d373662622d346135612d616131612d666263623634643665636635333038353030313353472e434f4d2e455a4c494e4b30313230313233343536373839303132333435362d313233303230345347515230333234413132333435362c423132333435362c433132333435363730343034413233583331323630303038434f4d2e4752414230313130413933464f33323330513332333930303037434f4d2e44425330313130313233343536373839303032313031323334353637383930333339303030313153472e434f4d2e4e4554533031323330323031343031383332383331313238383233353930303032313530303031313138373033323430303030333038383835383732303130393031313939303834453544433344383334343330303137434f4d2e51512e57454958494e2e50415930313130313233343536373839303032303431323334333536363030313053472e434f4d2e554f4230313438343544323333353037463545384333303645333837314134453946414341363031413830433131344235363435453544333639343030303953472e5041594e4f573031303130303231362b3632313233343536373839303132333033303130303433353132333435363738393031323334353637383930313233343536373839303132333435303530383230323031323331333732373030303953472e4149525041593031313041313142433030303058353138363030303753472e53475152303131323138303330373531303331373032303730312e30303033303330363038313030363034303230323035303331333830363039436f756e746572303130373038323031383034303735323034353831343533303337303235383032534735393136464f4f442058595a20505445204c54443630303953494e4741504f5245363130363038313030363632323330313038313233343536375230363037383736353433303633303433313746"</th>
+                </tr>
+            </table>
+            <h3>A.7.3 Sample SGQR Code</h3>
+            <img src="./assets/SGQR_sample.png" style="margin-left: auto; margin-right: auto; width: 150%;">
+        </article>
+        <br><br><br><br><center>CONFIDENTIAL</center>
+        <article class="uk-article uk-margin-xlarge-top">
+            <h2 id="article-CL" class="uk-article-title uk-margin-medium-bottom">Changelog<a href="#" data-uk-totop data-uk-scroll="duration: 400" class="tm-totop uk-float-right uk-margin-small-top"></a></h2>
+            <div class="tm-timeline uk-margin-large-top uk-margin-xlarge-bottom">
+                <div class="tm-timeline-entry">
+                    <div class="tm-timeline-time">
+                        <h4>May 31, 2018</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.7</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>1. Update to ID “51”.</li>
+                            <li>2. Include more information on Tag “62” for bill payment, which is already present in existing EMV specifications.</li>
+                            <li>3. Moved Sample SGQR into Annex A to add clarity that the Sample SGQR is not the SGQR Specifications per se but an illustration of what a simulated SGQR would be when in compliance with the SGQR Specifications.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Apr 7, 2018</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.6</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>1. Update of Payloads for<br>
+                                • LiquidPay<br>
+                                • EZi Wallet.</li>
+                            <li>2. Merchant name ID “59” will use trade name (“doing-businessas” name) instead of registered business</li>
+                            <li>3. Changes in SG Merchant Identity (ID “51”).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Jan 15, 2018</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.5</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>1. Update to both PayNow and NETS payloads.</li>
+                            <li>2. Rename “DBS” to “DBS Paylah!”</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Dec 13, 2017</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.4</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>Revise the sample QR code to include MasterCard.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Nov 7, 2017</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.3</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>1. Update of SG Merchant Identity (ID “51”)</li>
+                            <li>2. Combine all Data into a single Sample SGQR.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Oct 23, 2017</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.2</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>Included Airpay into Sample SGQR Code “B”.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Oct 19, 2017</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.1</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>Update to SG Merchant Identity (ID ”51”), and inclusion of 2 Sample SGQRs for Members.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tm-timeline-entry uk-margin-xlarge-top">
+                    <div class="tm-timeline-time">
+                        <h4>Oct 3, 2017</h4>
+                    </div>
+                    <div class="tm-timeline-body">
+                        <h2 class="uk-margin-medium-bottom">Version 1.0</h2>
+                        <ul class="uk-list uk-list-medium">
+                            <li>SGQR Specifications circulated to Taskforce Members.</li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<div class="uk-margin-large-top uk-section-primary">
+    <div class="uk-container">
+        <hr class="uk-margin-remove">
+    </div>
+</div>
+
+
+<footer class="uk-section tm-primary-color-dark uk-light uk-text-center">
+    <div class="uk-container">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                <li class="uk-first-column"><a href="index.html">Index</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="download.html">Download</a></li>
+            </ul>
+        </div>
+
+        <div class="uk-margin-medium tm-text-xsmall uk-text-meta copyright">Made by a human somewhere on the planet earth</div>
+
+    </div>
+</footer>
+
+</body>
+
+</html>

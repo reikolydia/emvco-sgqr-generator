@@ -1,0 +1,339 @@
+<!doctype html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+  <head>
+    <meta charset="utf-8">
+    <title>QRs v2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue.qriously.min.js"></script>
+    <script src="js/VueQrcodeReader.umd.min.js"></script>
+    <script src="js/crc.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:IsMyDocuments msdt:dt="string">1</mso:IsMyDocuments>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+
+<!--
+  Version 2 edited by: Jazereel Lydia Goh Reiko
+-->
+
+  </head>
+  <body>
+    <div id="app">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col bg-primary text-center text-white p-2 mb-1">
+            <h1>EMVCo QR Generator v2</h1>
+          </div>
+        </div>
+        <div class="row">
+          <!-- 2nd column -->
+          <div class="col-5">
+            <div class="card bg-secondary">
+              <h4 class="card-header">QR Data</h4>
+              <div class="card-body">
+                <span class="card-title h5">Main DataObjects</span>
+              </div>
+              <!-- <div class="bg-light p-1">
+                <span class="h5">Main DataObject</span><button v-on:click="generateQR" class="float-right btn btn-primary">Generate</button>
+              </div> -->
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in emvcoMainNodes" v-bind:key="node.id">
+                    <td>{{ node.id }} </td>
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <model v-if="showModelCustom" @close="showModelCustom = false" title="Merchant Account Information">
+              <div class="bg-light p-1">
+                <span class="h5">Additional Merchant Account PayLoad</span><button v-on:mousedown="addCustomNode" v-on:mouseup="showModelCustom = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <select class="form-control" v-model="customNode.id">
+                        <template v-for="n in customNodeNumber" :key="n">
+                          <option :value="n">{{ n }}</option>
+                        </template>
+                      </select>
+                    </td>
+                    <td><input type="text" class="form-control" v-model="customNode.desc" :maxlength="25" /></td>
+                    <td>
+                      <input v-if="customNode.editable" type="text" class="form-control" v-model="customNode.value" :maxlength="customNode.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ customNode.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </model>
+
+            <model v-if="showModelPayNow" @close="showModelPayNow = false" title="PayNow Payload">
+              <div class="bg-light p-1">
+                <span class="h5">PayNow DataObjects</span><button v-on:mousedown="addPayNowNode" v-on:mouseup="showModelPayNow = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in paynowNodes" v-bind:key="node.id">
+                    <td>{{ node.id }} </td>
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  
+            </model>
+
+            <model v-if="showModelNETS" @close="showModelNETS = false" title="NETS Payload">
+              <div class="bg-light p-1">
+                <span class="h5">NETS DataObjects</span><button v-on:mousedown="addNETSNode" v-on:mouseup="showModelNETS = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in NETSNodes" v-bind:key="node.id">
+                    <td>{{ node.id }} </td>
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  
+            </model>
+
+            <model v-if="showModelAdditional" @close="showModelAdditional = false" title="Additional Tag62 Payload">
+              <div class="bg-light p-1">
+                <span class="h5">Optional DataObjects</span><button v-on:mousedown="addOptionalNode" v-on:mouseup="showModelAdditional = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in tag62Nodes" v-bind:key="node.id">
+                    <td>{{ node.id }} </td>
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>            
+            </model>
+
+            <model v-if="showModelAdditional64" @close="showModelAdditional64 = false" title="Additional Tag64 Payload">
+              <div class="bg-light p-1">
+                <span class="h5">Optional DataObjects</span><button v-on:mousedown="addOptional64Node" v-on:mouseup="showModelAdditional64 = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in tag64Nodes" v-bind:key="node.id">
+                    <td>{{ node.id }} </td>
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>            
+            </model>
+
+            <model v-if="showModelNETSQR" @close="showModelNETSQR = false" title="NETS QR Payload">
+              <div class="bg-light p-1">
+                <span class="h5">NETS QR DataObjects</span><button v-on:mousedown="addNETSQRNode" v-on:mouseup="showModelNETSQR = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Description</th>
+                  <th scope="col">Choice</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in NETSQRNodes" v-bind:key="node.id">
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  
+            </model>
+
+            <model v-if="showModelMessage" @close="showModelMessage = false" title="Additional Reference / Message">
+              <div class="bg-light p-1">
+                <span class="h5">Optional DataObject</span><button v-on:mousedown="addMessageNode" v-on:mouseup="showModelMessage = false" class="float-right btn btn-primary">Add</button>
+              </div>
+              <table class="table table-sm table-hover table-striped table-bordered">
+                <thead>
+                  <th scope="col">Node#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Value</th>
+                </thead>
+                <tbody>
+                  <tr v-for="node in MessageNodes" v-bind:key="node.id">
+                    <td>{{ node.id }} </td>
+                    <td>{{ node.desc }} </td>
+                    <td>
+                      <input v-if="node.editable" type="text" class="form-control" v-model="node.value" :maxlength="node.maxlen" />
+                      <span class="d-inline-block text-break" v-else>{{ node.value }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>            
+            </model>
+
+          </div>
+          <!-- 2nd column -->
+          <div class="col-2 form-group">
+            <div class="card bg-secondary">
+              <h4 class="card-header" style="text-align: center;">QR Data Buttons</h4>
+              <button v-on:click="generateQR" class="float-right btn btn-primary"><h4>Generate</h4></button><button onclick="window.location.reload()" class="float-right btn "><h5>Reset</h5></button>
+              
+              <button type="button" class="btn btn-primary" @click="showModelPayNow = true" >
+                PayNow Payload
+              </button>
+              <button type="button" class="btn btn-primary" @click="showModelNETS = true" >
+                NETS Payload
+              </button>
+              <button class="btn btn-primary" @click="showModelCustom = true" >
+                Additional Payloads
+              </button>
+              <button class="btn btn-primary" @click="showModelAdditional = true" >
+                Tag62 Payload
+                </button>
+              <button class="btn btn-primary" @click="showModelAdditional64 = true" >
+                Tag64 Payload
+              </button>
+
+              <br>
+
+              <button class="btn btn-primary" v-on:click="showModelNETSQR = true">
+                NETS QR Payload
+              </button>
+
+              <br>
+
+              <button class="btn btn-primary" v-on:click="showModelMessage = true">
+                Reference / Message
+              </button>
+
+              <div class="card-body">
+                <span class="card-title h5"><center>QUICK ADD</center></span>
+              </div>
+
+              <button class="btn btn-primary" v-on:click="addquickPAYNOWmobile">
+                PayNow Mobile
+              </button>
+              <button class="btn btn-primary" v-on:click="addquickPAYNOWuen">
+                PayNow UEN
+              </button>
+              <button class="btn btn-primary" v-on:click="addquickPAYNOWvpaMOBILE">
+                PayNow VPA Mobile
+              </button>
+              <button class="btn btn-primary" v-on:click="addquickPAYNOWvpaUEN">
+                PayNow VPA UEN
+              </button>
+              <button class="btn btn-primary" v-on:click="addNETSquick">
+                NETS
+              </button>
+
+              <div class="card-body">
+                <span class="card-title h6"><center>SGQR</center></span>
+              </div>
+
+              <button class="btn btn-primary" v-on:click="addSGQRPLquick">
+                SGQR PayLoad
+              </button>
+
+              <div class="card-body">
+                <span class="card-title h6"><center>&#x26A0 TESTING &#x26A0</center></span>
+              </div>
+
+              <button class="btn btn-primary" v-on:click="addVISA">
+                VISA
+              </button>
+              <button class="btn btn-primary" v-on:click="addMASTER">
+                MASTERCARD
+              </button>
+
+              <!-- temp block
+
+              <button class="btn btn-primary">
+                NETSQPAY
+              </button>
+
+              <button class="btn btn-primary">
+                PromptPay
+              </button>
+
+              end block -->
+
+              <span class="card-title"></span>
+                <center><em>v0.15</em></center>
+              </span>
+            </div>
+          </div>
+
+          <!-- 3rd column -->
+          <div class="col-5 form-group">
+            <div class="card bg-secondary">
+              <h4 class="card-header">QR Code</h4>
+              <div class="card-body">
+                <div class="form-group p-2">
+                  <label><b>QR String</b> (Generated, or manually input)</label>
+                  <br><br>
+                  <textarea class="form-control" type="text" v-model="qrString" rows="4"></textarea>
+                </div>
+                <qriously v-model="qrString" :size="600" />
+              </div>
+            </div>
+          </div>
+          <!-- 3rd column -->
+        </div>
+      </div>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
+</html>
